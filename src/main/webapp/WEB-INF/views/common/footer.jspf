@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+	<!-- review section ends -->
+
+	<!-- footer section  -->
+
+	<section class="footer">
+
+		<div class="box-container">
+
+			<div class="box">
+				<h3>Về Chúng Tôi</h3>
+				<p>Amazing Việt Nam là đơn vị hàng đầu việt nam giúp người Việt
+					tìm kiếm những địa điểm du lịch lý tưởng trong đất nước hình chủ S.</p>
+			</div>
+
+			<div class="box">
+				<h3>Theo dõi chúng tôi</h3>
+				<a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">Twitter</a>
+				<a href="#">Linkedin</a>
+			</div>
+
+		</div>
+
+		<h1 class="credit">
+			Thiết Kế Bởi <span> Mr.Lê Văn Lĩnh </span> | Và Cộng Sự Phan Minh
+			Thuận
+		</h1>
+
+	</section>
+
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- custom js file link  -->
+	<script src="resources/js/script.js"></script>
+
+</body>
+</html>

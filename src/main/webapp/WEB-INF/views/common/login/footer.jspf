@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+	<section class="footer">
+
+	</section>
+
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- custom js file link  -->
+	<script src="resources/js/script.js"></script>
+
+</body>
+</html>
