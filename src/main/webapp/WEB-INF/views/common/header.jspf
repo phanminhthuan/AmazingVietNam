@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,18 +30,17 @@
 		<a href="#" class="logo"><span>A</span>mazing <span>V</span>iet <span>N</span>am</a>
 
 		<nav class="navbar">
-			<a href="#home">Trang Chủ</a> <a href="#book">Chuyến Đi</a> <a
-				href="#packages">Điểm Đến Yêu Thích</a> <a href="#services">Tiện Ích
-				Dịch Vụ</a> <a href="#gallery">Bài Viết</a> <a href="#review">Đánh
-				Giá</a>
+			<a href="#home">Trang Chủ</a>
+			 <a href="#book">Chuyến Đi</a>
+			  <a href="#packages">Điểm Đến Yêu Thích</a>
+			   <a href="#services">Tiện Ích Dịch Vụ</a>
+			    <a href="#gallery">Bài Viết</a> <a href="#review">Đánh Giá</a>
 
 		</nav>
 
 		<div class="icons">
-			<i class="fas fa-search" id="search-btn"></i> 
-			<a href="login2">
-			  <i class="fas fa-user" id="login-btn"></i>	
-			</a>
+			<i class="fas fa-search" id="search-btn"></i> <i class="fas fa-user"
+				id="login-btn"></i> <a href="login2"> </a>
 		</div>
 
 		<form action="" class="search-bar-container">
