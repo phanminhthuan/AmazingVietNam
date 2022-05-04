@@ -1,4 +1,4 @@
-package com.code.login;
+package com.code.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
