@@ -37,7 +37,7 @@
 		</nav>
 
 		<div class="icons">
-			<a href="login2">
+			<a href="login">
 			  <i class="fas fa-user" id="login-btn"></i>	
 			</a>
 		</div>
