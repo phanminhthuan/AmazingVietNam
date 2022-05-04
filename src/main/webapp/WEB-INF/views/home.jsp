@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
-
 
 <!-- home section starts  -->
 

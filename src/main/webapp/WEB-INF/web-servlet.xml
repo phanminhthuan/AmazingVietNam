@@ -1,12 +1,13 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-  	<context:annotation-config />
+	<context:annotation-config />
 	<context:component-scan base-package="com.code" />
 
 	<bean
@@ -18,59 +19,55 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-    destroy-method="close">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-    <property name="url"
-      value="jdbc:mysql://localhost:3306/hotels" />
-    <property name="username" value="root" />
-    <property name="password" value="" />
-  </bean>
-  
-  <bean id="sessionFactory"
-    class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-    <property name="dataSource" ref="dataSource"></property>
-    
-    <property name="packagesToScan" value="com.code.model" />
-    <!-- <property name="annotatedClasses">
-      <list>
-        <value>stackjava.com.springhibernate.entities.Customer</value>
-      </list>
-    </property> -->
-    
-    
-    <property name="hibernateProperties" value="classpath:hibernate.properties" />
-	    <!-- <property name="hibernateProperties">
-	      <props>
-	        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-	        <prop key="hibernate.current_session_context_class">thread</prop>
-	        <prop key="hibernate.show_sql">false</prop>
-	      </props>
-	    </property> -->
-	    
-  	</bean>
-  
-	<mvc:resources mapping="/resources/**" location="/resources/"/>
 
-    <bean id="messageSource"
-        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:messages" />
-        <property name="defaultEncoding" value="UTF-8" />
-    </bean>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/hotels" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
 
-    <bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="en" />
-    </bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
 
-    <mvc:interceptors>
-        <bean id="localeChangeInterceptor"
-            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="language" />
-        </bean>
-    </mvc:interceptors>
-	
+		<property name="packagesToScan" value="com.code.model" />
+		<!-- <property name="annotatedClasses"> <list> <value>stackjava.com.springhibernate.entities.Customer</value> 
+			</list> </property> -->
+
+
+		<property name="hibernateProperties"
+			value="classpath:hibernate.properties" />
+		<!-- <property name="hibernateProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+			<prop key="hibernate.current_session_context_class">thread</prop> <prop key="hibernate.show_sql">false</prop> 
+			</props> </property> -->
+
+	</bean>
+
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language" />
+		</bean>
+	</mvc:interceptors>
+
 	<mvc:annotation-driven />
 
 </beans>
