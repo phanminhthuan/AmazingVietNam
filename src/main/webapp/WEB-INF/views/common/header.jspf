@@ -29,18 +29,26 @@
 		<a href="#" class="logo"><span>A</span>mazing <span>V</span>iet <span>N</span>am</a>
 
 		<nav class="navbar">
-			<a href="/">Trang Chủ</a> <a href="/booking">Đặt Phòng</a> <a
-				href="/#packages">Điểm Đến Yêu Thích</a> <a href="/#services">Tiện Ích
-				Dịch Vụ</a> <a href="/#gallery">Bài Viết</a> <a href="/#review">Đánh
-				Giá</a>
-
+			<a href="/">Home</a>
+			<a href="/booking">Đặt Phòng</a>
+			<a href="/#packages">Điểm Đến Yêu Thích</a>
+			<a href="/#services">Dịch Vụ</a>
+			<a href="/#gallery">Bài Viết</a>
+			<a href="/#review">Đánh Giá</a>
 		</nav>
 
 		<div class="icons">
+		    <i class="fas fa-search" id="search-btn"></i> 
 			<a href="login">
 			  <i class="fas fa-user" id="login-btn"></i>	
 			</a>
 		</div>
+		
+		<form action="" class="search-bar-container">
+            <input type="search" id="search-bar"
+                placeholder="Nhập điều bạn muốn tìm..." onkeyup="searchfunc()">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
 
 	</header>
 

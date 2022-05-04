@@ -26,11 +26,41 @@
 		<form action="">
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
-				<input type="text" placeholder="Nhập địa điểm muốn đi">
+				<select>
+					<option value="" disabled selected> Chọn địa điểm bạn muốn đến</option>
+					<option value="sapa">Sapa</option>
+					<option value="vinhhalong">Vịnh Hạ Long</option>
+					<option value="danang">Đà Nẵng</option>
+					<option value="hoian">Hội An</option>
+					<option value="nhatrang">Nha Trang</option>
+					<option value="dalat">Đà Lạt</option>
+					<option value="vungtau">Vũng Tàu</option>
+					<option value="dongthap">Đồng Tháp</option>
+					<option value="phuquoc">Phú Quốc</option>
+				</select>
 			</div>
+			
+			<div class="inputBox">
+				<h3>Khách Sạn</h3>
+				<select>
+					<option value="" disabled selected> Chọn khách sạn</option>
+					<option value="1">Đức Minh</option>
+				</select>
+			</div>
+			
+			<div class="inputBox">
+				<h3>Số phòng</h3>
+				<select>
+					<option value="" disabled selected> Chọn phòng</option>
+					<option value="109">109</option>
+					<option value="110">110</option>
+					<option value="111">111</option>
+				</select>
+			</div>
+			
 			<div class="inputBox">
 				<h3>Số người</h3>
-				<input type="number" placeholder="Chọn số người chuyến đi">
+				<input type="number" min="0" placeholder="Chọn số người chuyến đi">
 			</div>
 			<div class="inputBox">
 				<h3>Ngày đi</h3>
@@ -42,7 +72,6 @@
 			</div>
 			<input type="submit" class="btn" value="Tìm Kiếm">
 		</form>
-
 	</div>
 
 </section>

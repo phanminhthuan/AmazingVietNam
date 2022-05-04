@@ -36,7 +36,7 @@ section{
 }
 
 .heading.booking{
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 .heading span{
@@ -319,7 +319,7 @@ header .search-bar-container label:hover{
   padding:.5rem 0;
 }
 
-.book .row form .inputBox input{
+.book .row form .inputBox input, .book .row form .inputBox select {
   width:100%;
   padding:1rem;
   border:.1rem solid rgba(0,0,0,.1);

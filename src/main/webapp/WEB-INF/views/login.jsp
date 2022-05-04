@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="common/login/header.jspf"%>
+
+<%@ include file="common/header.jspf"%>
 
 	<!-- login form container  -->
 
@@ -10,8 +11,8 @@
 			<input type="account" class="box" placeholder="Nhập email của bạn">
 			<input type="password" class="box" placeholder="Nhập mật khẩu">
 			<input type="submit" value="Đăng Nhập" class="btn"> <input
-				type="checkbox" id="remember"> <label for="remember">Nhớ
-				tài khoản</label>
+				type="checkbox" id="remember"> 
+				<label for="remember">Nhớ tài khoản</label>
 			<p>
 				Quên mật khẩu ? <a href="#">Click vào đây</a>
 			</p>
@@ -22,6 +23,6 @@
 
 	</div>
 
-<%@ include file="common/login/footer.jspf"%>
+<%@ include file="common/footer.jspf"%>
 
 

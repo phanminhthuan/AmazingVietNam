@@ -23,20 +23,24 @@ public class Hotel {
 
 	@Column(name = "email")
 	private String email;
-
+	
 	@Column(name = "address")
 	private String address;
+	
+	@Column(name = "location")
+	private String location;
 
 	public Hotel() {
 	}
 
 	public Hotel(int id, String name, String phoneNumber, String email,
-			String address) {
+			String address, String location) {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.address = address;
+		this.location = location;
 	}
 
 	public int getId() {
@@ -72,5 +76,12 @@ public class Hotel {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	public void set(String location) {
+		this.location = location;
 	}
 }

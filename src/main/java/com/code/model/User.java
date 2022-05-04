@@ -26,16 +26,20 @@ public class User {
 	
 	@Column(name = "status")
 	private Boolean status;	
+	
+	@Column(name = "email")
+	private String email;
 
 	public User() {
 	}
 
-	public User(int id, String fullName, String userName, String password, Boolean status) {
+	public User(int id, String fullName, String userName, String password, Boolean status, String email) {
 		this.id = id;
 		this.fullName = fullName;
 		this.userName = userName;
 		this.password = password;
 		this.status = status;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -64,5 +68,12 @@ public class User {
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
