@@ -35,6 +35,10 @@ section{
   padding:2.5rem 0
 }
 
+.heading.booking{
+	margin-top: 100px;
+}
+
 .heading span{
   font-size: 3.5rem;
   background:rgba(255, 165, 0,.2);

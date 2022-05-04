@@ -22,48 +22,6 @@
 
 <!-- home section ends -->
 
-<!-- book section starts  -->
-
-<section class="book" id="book">
-
-	<h1 class="heading">
-		<span>C</span> <span>h</span> <span>u</span> <span>y</span> <span>ế</span>
-		<span>n</span> <span class="space"></span> <span>Đ</span> <span>i</span>
-
-
-	</h1>
-
-	<div class="row">
-
-		<div class="image">
-			<img src="resources/img/anh_1.jpg">
-		</div>
-
-		<form action="">
-			<div class="inputBox">
-				<h3>Nơi đến</h3>
-				<input type="text" placeholder="Nhập địa điểm muốn đi">
-			</div>
-			<div class="inputBox">
-				<h3>Số người</h3>
-				<input type="number" placeholder="Chọn số người chuyến đi">
-			</div>
-			<div class="inputBox">
-				<h3>Ngày đi</h3>
-				<input type="date">
-			</div>
-			<div class="inputBox">
-				<h3>Ngày về</h3>
-				<input type="date">
-			</div>
-			<input type="submit" class="btn" value="Tìm Kiếm">
-		</form>
-
-	</div>
-
-</section>
-
-<!-- book section ends -->
 
 <!-- packages section starts  -->
 

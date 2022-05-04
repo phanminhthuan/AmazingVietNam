@@ -29,9 +29,9 @@
 		<a href="#" class="logo"><span>A</span>mazing <span>V</span>iet <span>N</span>am</a>
 
 		<nav class="navbar">
-			<a href="#home">Trang Chủ</a> <a href="#book">Chuyến Đi</a> <a
-				href="#packages">Điểm Đến Yêu Thích</a> <a href="#services">Tiện Ích
-				Dịch Vụ</a> <a href="#gallery">Bài Viết</a> <a href="#review">Đánh
+			<a href="/">Trang Chủ</a> <a href="/booking">Đặt Phòng</a> <a
+				href="/#packages">Điểm Đến Yêu Thích</a> <a href="/#services">Tiện Ích
+				Dịch Vụ</a> <a href="/#gallery">Bài Viết</a> <a href="/#review">Đánh
 				Giá</a>
 
 		</nav>
