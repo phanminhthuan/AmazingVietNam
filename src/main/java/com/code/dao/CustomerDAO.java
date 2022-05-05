@@ -32,7 +32,7 @@ public class CustomerDAO {
   
   public List<Customer> findAll() {
     Session session = this.sessionFactory.openSession();
-    List<Customer> result = session.createQuery("FROM customers", Customer.class).getResultList();
+    List<Customer> result = session.createQuery("FROM Customer", Customer.class).getResultList();
     return result;
   }
   

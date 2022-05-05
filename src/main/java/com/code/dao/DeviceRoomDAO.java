@@ -32,7 +32,7 @@ public class DeviceRoomDAO {
   
   public List<DeviceRoom> findAll() {
     Session session = this.sessionFactory.openSession();
-    List<DeviceRoom> result = session.createQuery("FROM device_roomS", DeviceRoom.class).getResultList();
+    List<DeviceRoom> result = session.createQuery("FROM DeviceRoom", DeviceRoom.class).getResultList();
     return result;
   }
   

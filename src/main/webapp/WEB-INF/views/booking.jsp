@@ -5,6 +5,7 @@
 
 <section class="book" id="book">
 
+
 	<h1 class="heading booking">
 		<span>Đ</span> 
 		<span>ặ</span> 
@@ -23,10 +24,12 @@
 			<img src="resources/img/anh_1.jpg">
 		</div>
 
+		<div>Web Application. Passed parameter : th:text="${message}"</div>
+		
 		<form action="">
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
-				<select>
+				<select id="location">
 					<option value="" disabled selected> Chọn địa điểm bạn muốn đến</option>
 					<option value="sapa">Sapa</option>
 					<option value="vinhhalong">Vịnh Hạ Long</option>
@@ -42,19 +45,15 @@
 			
 			<div class="inputBox">
 				<h3>Khách Sạn</h3>
-				<select>
+				<select id = "hotel">
 					<option value="" disabled selected> Chọn khách sạn</option>
-					<option value="1">Đức Minh</option>
 				</select>
 			</div>
 			
 			<div class="inputBox">
 				<h3>Số phòng</h3>
-				<select>
+				<select id = "room">
 					<option value="" disabled selected> Chọn phòng</option>
-					<option value="109">109</option>
-					<option value="110">110</option>
-					<option value="111">111</option>
 				</select>
 			</div>
 			
@@ -76,5 +75,48 @@
 
 </section>
 
-<!-- book section ends -->
+<script type="text/javascript">
+$(function () {
+    $("#location").change(function () {
+        $.ajax({
+            url: '/booking-get-hotels?location=' + $(this).val(),
+            type: "GET",
+            async: false,
+            success: function (response) {
+                if (response) {
+                    var models = response;
+                    var options = '<option value="" disabled selected> Chọn khách sạn</option>';
+                    for (var i in models) {
+                        options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
+                    }
+
+                    $("#hotel").html(options);
+                }
+            }
+        });
+    });
+
+    $("#hotel").change(function () {
+        $.ajax({
+            url: '/booking-get-rooms?hotelId=' + $(this).val(),
+            type: "GET",
+            async: false,
+            success: function (response) {
+                if (response) {
+                    var models = response;
+                    var options = '<option value="" disabled selected> Chọn phòng</option>';
+                    for (var i in models) {
+                        options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
+                    }
+                    
+                    $("#room").html(options);
+                }
+            }
+        });
+    });
+
+});
+
+</script>
+	<!-- book section ends -->
 <%@ include file="common/footer.jspf"%>

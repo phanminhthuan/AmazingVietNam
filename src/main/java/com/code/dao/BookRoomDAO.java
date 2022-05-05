@@ -32,7 +32,7 @@ public class BookRoomDAO {
   
   public List<BookRoom> findAll() {
     Session session = this.sessionFactory.openSession();
-    List<BookRoom> result = session.createQuery("FROM book_rooms", BookRoom.class).getResultList();
+    List<BookRoom> result = session.createQuery("FROM BookRoom", BookRoom.class).getResultList();
     return result;
   }
   

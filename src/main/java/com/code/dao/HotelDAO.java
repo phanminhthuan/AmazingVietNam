@@ -32,7 +32,14 @@ public class HotelDAO {
   
   public List<Hotel> findAll() {
     Session session = this.sessionFactory.openSession();
-    List<Hotel> result = session.createQuery("FROM floors", Hotel.class).getResultList();
+    List<Hotel> result = session.createQuery("FROM Hotel", Hotel.class).getResultList();
+    return result;
+  }
+  
+  public List<Hotel> findByLocation(String location) {
+    Session session = this.sessionFactory.openSession();
+    List<Hotel> result = session.createQuery("FROM Hotel where location = :location", Hotel.class)
+    .setParameter("location", location).getResultList();
     return result;
   }
   
