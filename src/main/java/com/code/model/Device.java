@@ -18,16 +18,16 @@ public class Device {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "unit_price")
-	private Float unitPrice;
+	@Column(name = "price")
+	private Float price;
 
 	public Device() {
 	}
 
-	public Device(int id, String name, float unitPrice) {
+	public Device(int id, String name, float price) {
 		this.id = id;
 		this.name = name;
-		this.unitPrice = unitPrice;
+		this.price = price;
 	}
 
 	public int getId() {
@@ -45,9 +45,9 @@ public class Device {
 	}
 
 	public float getUnitPrice() {
-		return unitPrice;
+		return price;
 	}
 	public void setUnitPrice(float unitPrice) {
-		this.unitPrice = unitPrice;
+		this.price = unitPrice;
 	}
 }

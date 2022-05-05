@@ -18,24 +18,28 @@ public class Room {
 	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "hotel_id")
+	private int hotelId;
+	
 	@Column(name = "status")
 	private Boolean status;	
 	
-	@Column(name = "room_type_id")
-	private int roomTypeId;
-
-	@Column(name = "floor_id")
-	private int floorId;
+	@Column(name = "room_type")
+	private String roomType;
+	
+	@Column(name = "price")
+	private Float price;
 	
 	public Room() {
 	}
 
-	public Room(int id, String name, Boolean status, int roomTypeId, int floorId ) {
+	public Room(int id, String name,int hotelId, Boolean status, String roomType, Float price ) {
 		this.id = id;
 		this.name = name;
+		this.hotelId = hotelId;
 		this.status = status;
-		this.roomTypeId = roomTypeId;
-		this.floorId = floorId;
+		this.roomType = roomType;
+		this.price = price;
 	}
 
 	public int getId() {
@@ -52,6 +56,13 @@ public class Room {
 		this.name = name;
 	}
 	
+	public int getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
+	}
+	
 	public Boolean getStatus() {
 		return status;
 	}
@@ -59,17 +70,17 @@ public class Room {
 		this.status = status;
 	}
 	
-	public int getRoomTypeId() {
-		return roomTypeId;
+	public String getRoomType() {
+		return roomType;
 	}
-	public void setRoomTypeId(int roomTypeId) {
-		this.roomTypeId = roomTypeId;
+	public void setRoomTypeId(String roomType) {
+		this.roomType = roomType;
 	}
 	
-	public int getFloorId() {
-		return floorId;
+	public Float getPrice() {
+		return price;
 	}
-	public void setFloorId(int floorId) {
-		this.floorId = floorId;
+	public void setFloorId(Float price) {
+		this.price = price;
 	}
 }
