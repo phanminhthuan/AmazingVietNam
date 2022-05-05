@@ -24,7 +24,6 @@
 			<img src="resources/img/anh_1.jpg">
 		</div>
 
-		<div>Web Application. Passed parameter : th:text="${message}"</div>
 		
 		<form action="">
 			<div class="inputBox">
@@ -45,14 +44,14 @@
 			
 			<div class="inputBox">
 				<h3>Khách Sạn</h3>
-				<select id = "hotel">
+				<select id="hotel">
 					<option value="" disabled selected> Chọn khách sạn</option>
 				</select>
 			</div>
 			
 			<div class="inputBox">
 				<h3>Số phòng</h3>
-				<select id = "room">
+				<select id="room">
 					<option value="" disabled selected> Chọn phòng</option>
 				</select>
 			</div>
@@ -69,7 +68,7 @@
 				<h3>Ngày về</h3>
 				<input type="date">
 			</div>
-			<input type="submit" class="btn" value="Tìm Kiếm">
+			<input type="submit" class="btn" value="Đặt Phòng">
 		</form>
 	</div>
 
@@ -77,15 +76,25 @@
 
 <script type="text/javascript">
 $(function () {
+	var optionsRoom = '<option value="" disabled selected> Chọn phòng</option>';
+	
     $("#location").change(function () {
+    	const value = $(this).val();
+    	$("#room").html(optionsRoom);
+    	var options = '<option value="" disabled selected> Chọn khách sạn</option>';
+    	if(value === "") {
+    		$("#hotel").html(options);
+    		return;
+    	}
+    	
         $.ajax({
-            url: '/booking-get-hotels?location=' + $(this).val(),
+            url: '/booking-get-hotels?location=' + value,
             type: "GET",
             async: false,
             success: function (response) {
                 if (response) {
                     var models = response;
-                    var options = '<option value="" disabled selected> Chọn khách sạn</option>';
+                    
                     for (var i in models) {
                         options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
                     }
@@ -97,14 +106,22 @@ $(function () {
     });
 
     $("#hotel").change(function () {
+    	const value = $(this).val();
+    	var options = optionsRoom;
+    	
+    	if(value === "") {
+    		$("#room").html(options);
+    		return;
+    	}
+    	
         $.ajax({
-            url: '/booking-get-rooms?hotelId=' + $(this).val(),
+            url: '/booking-get-rooms?hotelId=' + value,
             type: "GET",
             async: false,
             success: function (response) {
                 if (response) {
                     var models = response;
-                    var options = '<option value="" disabled selected> Chọn phòng</option>';
+                    
                     for (var i in models) {
                         options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
                     }

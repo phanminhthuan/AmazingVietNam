@@ -39,6 +39,11 @@ section{
 	margin-top: 50px;
 }
 
+.heading.booking-success{
+	margin-top: 130px;
+	margin-bottom: 100px;
+}
+
 .heading span{
   font-size: 3.5rem;
   background:rgba(255, 165, 0,.2);
