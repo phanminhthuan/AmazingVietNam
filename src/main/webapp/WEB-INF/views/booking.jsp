@@ -149,9 +149,12 @@ $(function () {
             }),
             async: false,
             success: function (response) {
-                if (response) {
-                    alert(response);
+                if (response == "success") {
+                    window.location = "/booking-success"; 
                 }
+                else {
+                	alert("Save fail");
+                }	
             }
         });
     });
