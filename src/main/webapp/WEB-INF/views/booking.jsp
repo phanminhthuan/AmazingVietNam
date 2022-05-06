@@ -25,7 +25,7 @@
 		</div>
 
 		
-		<form action="">
+		<form action="#">
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
 				<select id="location">
@@ -44,37 +44,38 @@
 			
 			<div class="inputBox">
 				<h3>Khách Sạn</h3>
-				<select id="hotel">
+				<select id="hotel" name="hotel_id">
 					<option value="" disabled selected> Chọn khách sạn</option>
 				</select>
 			</div>
 			
 			<div class="inputBox">
 				<h3>Số phòng</h3>
-				<select id="room">
+				<select id="room" name="room_id">
 					<option value="" disabled selected> Chọn phòng</option>
 				</select>
 			</div>
 			
 			<div class="inputBox">
 				<h3>Số người</h3>
-				<input type="number" min="0" placeholder="Chọn số người chuyến đi">
+				<input type="number" min="0" placeholder="Chọn số người chuyến đi" name="amount_people">
 			</div>
 			<div class="inputBox">
 				<h3>Ngày đi</h3>
-				<input type="date">
+				<input type="date" name="check_in_date">
 			</div>
 			<div class="inputBox">
 				<h3>Ngày về</h3>
-				<input type="date">
+				<input type="date" name="check_out_date">
 			</div>
-			<input type="submit" class="btn" value="Đặt Phòng">
+			<input type="button" class="btn" value="Đặt Phòng">
 		</form>
 	</div>
 
 </section>
-
+<!--  -->
 <script type="text/javascript">
+//Chọn 
 $(function () {
 	var optionsRoom = '<option value="" disabled selected> Chọn phòng</option>';
 	
@@ -131,8 +132,33 @@ $(function () {
             }
         });
     });
+    
+    $(".btn").click(function (e) {
+
+        $.ajax({
+            url: '/booking-save',
+            type: "POST",
+            contentType:"application/json",
+            data: JSON.stringify({
+				"room_id": $("select[name='room_id']").val(),
+				"user_id": 1,
+				"hotel_id": $("select[name='hotel_id']").val(),
+				"amount_people": $("input[name='amount_people']").val(),
+				"check_in_date": $("input[name='check_in_date']").val(),
+				"check_out_date": $("input[name='check_out_date']").val()
+            }),
+            async: false,
+            success: function (response) {
+                if (response) {
+                    alert(response);
+                }
+            }
+        });
+    });
 
 });
+
+
 
 </script>
 	<!-- book section ends -->

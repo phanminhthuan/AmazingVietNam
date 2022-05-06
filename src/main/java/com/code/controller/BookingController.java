@@ -1,14 +1,17 @@
 package com.code.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.servlet.ModelAndView;
 
 import com.code.dao.BookRoomDAO;
 import com.code.dao.HotelDAO;
@@ -54,7 +57,24 @@ public class BookingController {
 
 	@RequestMapping(value = "/booking-save", method = RequestMethod.POST)
 	@ResponseBody
-	public String BookingSave(BookRoom model) {
+	public String BookingSave(@RequestBody Map<String, String> payload) {
+		System.out.println(payload);
+		BookRoom model = new BookRoom();
+		model.setUserId(Integer.parseInt(payload.get("user_id")));
+		model.setRoomId(Integer.parseInt(payload.get("room_id")));
+		model.setHotelId(Integer.parseInt(payload.get("hotel_id")));
+		model.setAmountPeople(Integer.parseInt(payload.get("amount_people")));
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+			Date dateCheckInDate = formatter.parse(payload.get("check_in_date"));
+			model.setCheckInDate(dateCheckInDate);
+			Date dateCheckOutDate = formatter.parse(payload.get("check_out_date"));
+			model.setCheckOutDate(dateCheckOutDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    
 		bookRoomDAO.save(model);
 		return "success";
 	}
