@@ -1,13 +1,15 @@
 package com.code.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +28,7 @@ public class BookRoom {
 	
 	@Column(name = "hotel_id")
 	private int hotelId;
-	
+	 
 	@Column(name = "amount_people")
 	private int amountPeople;
 	
@@ -35,6 +37,28 @@ public class BookRoom {
 
 	@Column(name = "check_out_date")
 	private Date checkOutDate;
+
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private Hotel hotel;
+	 
+	public Hotel getHotel() {
+		return hotel;
+	}
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name = "room_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private Room room;
+	 
+	public Room getRoom() {
+		return room;
+	}
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	public BookRoom() {
 	}
@@ -99,5 +123,7 @@ public class BookRoom {
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
+	
+	
 	
 }

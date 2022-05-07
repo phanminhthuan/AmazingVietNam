@@ -29,7 +29,7 @@ public class Hotel {
 	
 	@Column(name = "location")
 	private String location;
-
+	
 	public Hotel() {
 	}
 

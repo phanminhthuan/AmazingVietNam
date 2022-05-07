@@ -72,7 +72,7 @@
 
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -92,7 +92,7 @@
 
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -111,7 +111,7 @@
 						class="far fa-star"></i>
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -130,7 +130,7 @@
 
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -149,7 +149,7 @@
 						class="far fa-star"></i>
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -167,7 +167,7 @@
 						class="far fa-star"></i>
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -186,7 +186,7 @@
 						class="far fa-star"></i>
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -207,7 +207,7 @@
 
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 
@@ -226,7 +226,7 @@
 						class="far fa-star"></i>
 				</div>
 				<div></div>
-				<a href="#" class="btn">Đặt ngay</a>
+				<a href="/booking" class="btn">Đặt ngay</a>
 			</div>
 		</div>
 

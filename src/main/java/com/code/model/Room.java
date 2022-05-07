@@ -73,7 +73,7 @@ public class Room {
 	public String getRoomType() {
 		return roomType;
 	}
-	public void setRoomTypeId(String roomType) {
+	public void setRoomType(String roomType) {
 		this.roomType = roomType;
 	}
 	
