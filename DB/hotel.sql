@@ -14,13 +14,77 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Dumping structure for table hotels.book_rooms
+DROP TABLE IF EXISTS `book_rooms`;
+CREATE TABLE IF NOT EXISTS `book_rooms` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `room_id` int(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `hotel_id` int(50) NOT NULL,
+  `amount_people` int(11) NOT NULL,
+  `check_in_date` datetime NOT NULL,
+  `check_out_date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_book_rooms_rooms` (`room_id`),
+  KEY `FK_book_rooms_users` (`user_id`),
+  KEY `FK_book_rooms_hotels` (`hotel_id`),
+  CONSTRAINT `FK_book_rooms_hotels` FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table hotels.book_rooms: ~1 rows (approximately)
+INSERT INTO `book_rooms` (`id`, `room_id`, `user_id`, `hotel_id`, `amount_people`, `check_in_date`, `check_out_date`) VALUES
+	(17, 345, 1, 1, 3, '2022-05-07 00:00:00', '2022-05-09 00:00:00');
+
+-- Dumping structure for table hotels.customers
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `citizen_identification_number` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table hotels.customers: ~0 rows (approximately)
 
+-- Dumping structure for table hotels.devices
+DROP TABLE IF EXISTS `devices`;
+CREATE TABLE IF NOT EXISTS `devices` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_price` float NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table hotels.devices: ~0 rows (approximately)
 
+-- Dumping structure for table hotels.device_rooms
+DROP TABLE IF EXISTS `device_rooms`;
+CREATE TABLE IF NOT EXISTS `device_rooms` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `room_id` int(50) NOT NULL,
+  `device_id` int(50) NOT NULL,
+  `amount` int(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_device_rooms_rooms` (`room_id`),
+  KEY `FK_device_rooms_devices` (`device_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table hotels.device_rooms: ~0 rows (approximately)
+
+-- Dumping structure for table hotels.hotels
+DROP TABLE IF EXISTS `hotels`;
+CREATE TABLE IF NOT EXISTS `hotels` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table hotels.hotels: ~27 rows (approximately)
 INSERT INTO `hotels` (`id`, `name`, `phone_number`, `email`, `address`, `location`) VALUES
@@ -52,6 +116,20 @@ INSERT INTO `hotels` (`id`, `name`, `phone_number`, `email`, `address`, `locatio
 	(27, 'M Hotel Phu Quoc', '0925162850', 'mhotel@gmail.com', '46 Đường Trần Hưng Đạo, Cửa Lấp, Phú Quốc, Kiên Giang, Việt Nam', 'phuquoc'),
 	(28, 'An Phu Hotel', '0268953015', 'anphuhotel@gmail.com', '185 Đường 30 Tháng 4, TT. Dương Đông, Phú Quốc, Kiên Giang, Việt Nam', 'phuquoc');
 
+-- Dumping structure for table hotels.rooms
+DROP TABLE IF EXISTS `rooms`;
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_id` int(11) NOT NULL,
+  `status` bit(1) NOT NULL,
+  `room_type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` float NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_rooms_hotels` (`hotel_id`),
+  CONSTRAINT `FK_rooms_hotels` FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=432 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table hotels.rooms: ~6 rows (approximately)
 INSERT INTO `rooms` (`id`, `name`, `hotel_id`, `status`, `room_type`, `price`) VALUES
 	(201, '201', 1, b'0', 'Vip', 750000),
@@ -60,6 +138,18 @@ INSERT INTO `rooms` (`id`, `name`, `hotel_id`, `status`, `room_type`, `price`) V
 	(345, '345', 1, b'0', 'Normal', 300000),
 	(406, '406', 1, b'0', 'Normal', 342000),
 	(431, '431', 2, b'0', 'Normal', 435000);
+
+-- Dumping structure for table hotels.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` bit(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table hotels.users: ~2 rows (approximately)
 INSERT INTO `users` (`id`, `full_name`, `user_name`, `password`, `email`, `status`) VALUES
