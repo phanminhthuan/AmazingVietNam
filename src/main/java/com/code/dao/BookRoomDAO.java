@@ -33,12 +33,15 @@ public class BookRoomDAO {
   public List<BookRoom> findAll() {
     Session session = this.sessionFactory.openSession();
     List<BookRoom> result = session.createQuery("FROM BookRoom", BookRoom.class).getResultList();
+    session.close();
     return result;
   }
   
   public BookRoom findById(int id) {
     Session session = this.sessionFactory.openSession();
-    return session.find(BookRoom.class, id);
+    BookRoom model = session.find(BookRoom.class, id);
+    session.close();
+    return model;
   }
   
   public void delete(BookRoom bookRoom) {

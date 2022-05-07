@@ -40,12 +40,14 @@ public class HotelDAO {
     Session session = this.sessionFactory.openSession();
     List<Hotel> result = session.createQuery("FROM Hotel where location = :location", Hotel.class)
     .setParameter("location", location).getResultList();
+    session.close();
     return result;
   }
   
   public Hotel findById(int id) {
     Session session = this.sessionFactory.openSession();
-    return session.find(Hotel.class, id);
+    Hotel model = session.find(Hotel.class, id);
+    return model;
   }
   
   public void delete(Hotel hotel) {

@@ -91,7 +91,6 @@ $(function () {
         $.ajax({
             url: '/booking-get-hotels?location=' + value,
             type: "GET",
-            async: false,
             success: function (response) {
                 if (response) {
                     var models = response;
@@ -118,7 +117,6 @@ $(function () {
         $.ajax({
             url: '/booking-get-rooms?hotelId=' + value,
             type: "GET",
-            async: false,
             success: function (response) {
                 if (response) {
                     var models = response;

@@ -33,12 +33,15 @@ public class DeviceDAO {
   public List<Device> findAll() {
     Session session = this.sessionFactory.openSession();
     List<Device> result = session.createQuery("FROM Device", Device.class).getResultList();
+    session.close();
     return result;
   }
   
   public Device findById(int id) {
     Session session = this.sessionFactory.openSession();
-    return session.find(Device.class, id);
+    Device model = session.find(Device.class, id);
+    session.close();
+    return model;
   }
   
   public void delete(Device device) {

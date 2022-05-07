@@ -42,12 +42,14 @@ public class RoomDAO {
 		Session session = this.sessionFactory.openSession();
 		List<Room> result = session.createQuery("FROM Room where hotel_id = :hotel_id", Room.class)
 				.setParameter("hotel_id", hotelId).getResultList();
+		session.close();
 		return result;
 	}
 
 	public Room findById(int id) {
 		Session session = this.sessionFactory.openSession();
-		return session.find(Room.class, id);
+		Room model = session.find(Room.class, id);
+		return model;
 	}
 
 	public void delete(Room room) {

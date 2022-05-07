@@ -33,12 +33,15 @@ public class UserDAO {
   public List<User> findAll() {
     Session session = this.sessionFactory.openSession();
     List<User> result = session.createQuery("FROM User", User.class).getResultList();
+    session.close();
     return result;
   }
   
   public User findById(int id) {
     Session session = this.sessionFactory.openSession();
-    return session.find(User.class, id);
+    User model = session.find(User.class, id);
+    session.close();
+    return model;
   }
   
   public void delete(User user) {

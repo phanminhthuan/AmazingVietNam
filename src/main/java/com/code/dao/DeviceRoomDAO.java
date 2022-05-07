@@ -33,12 +33,15 @@ public class DeviceRoomDAO {
   public List<DeviceRoom> findAll() {
     Session session = this.sessionFactory.openSession();
     List<DeviceRoom> result = session.createQuery("FROM DeviceRoom", DeviceRoom.class).getResultList();
+    session.close();
     return result;
   }
   
   public DeviceRoom findById(int id) {
     Session session = this.sessionFactory.openSession();
-    return session.find(DeviceRoom.class, id);
+    DeviceRoom model = session.find(DeviceRoom.class, id);
+    session.close();
+    return model;
   }
   
   public void delete(DeviceRoom deviceRoom) {
