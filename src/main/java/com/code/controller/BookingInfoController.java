@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.code.dao.BookRoomDAO;
-import com.code.dao.HotelDAO;
-import com.code.dao.RoomDAO;
 import com.code.model.BookRoom;
 
 @Controller
