@@ -1,6 +1,9 @@
 package com.code.model;
 
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -124,6 +127,15 @@ public class BookRoom {
 		this.checkOutDate = checkOutDate;
 	}
 	
+	public String getFormatDate(Date date) {
+		 SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+	     return dt.format(date);
+	}
 	
-	
+	public long getNumberDays() {
+		long diff =  this.checkOutDate.getTime() - this.checkInDate.getTime();
+
+        TimeUnit time = TimeUnit.DAYS; 
+        return time.convert(diff, TimeUnit.MILLISECONDS);
+	}
 }

@@ -16,10 +16,6 @@ import com.code.model.BookRoom;
 @Controller
 public class BookingInfoController {
 	@Autowired
-	private HotelDAO hotelDAO;
-	@Autowired
-	private RoomDAO roomDAO;
-	@Autowired
 	private BookRoomDAO bookRoomDAO;
 	
 	@RequestMapping(value = "/booking-info", method = RequestMethod.GET)
@@ -27,5 +23,12 @@ public class BookingInfoController {
 		List<BookRoom> bookRooms = bookRoomDAO.findAll();
 		model.addAttribute("bookRooms", bookRooms);
 		return "booking-info";
+	}
+	
+	@RequestMapping(value = "/booking-info-delete", method = RequestMethod.GET)
+	public String index(String id) {
+		BookRoom bookRoom = bookRoomDAO.findById(Integer.parseInt(id));
+		bookRoomDAO.delete(bookRoom);
+		return "redirect:booking-info";
 	}
 }

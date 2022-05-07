@@ -9,6 +9,7 @@
 .container {
 	max-width: 85%;
 	margin: auto;
+	min-height: 250px;
 }
 
 h2 {
@@ -56,21 +57,25 @@ tr:nth-child(even) {
 				<th>Ngày Đi</th>
 				<th>Ngày Về</th>
 				<th>Đơn Giá</th>
+				<th>Số Ngày</th>
 				<th>Thành Tiền</th>
+				<th>Xóa</th>
 			</tr>
 
 			<c:forEach var="bookRoom" items="${bookRooms}">
 				<tr>
 					<td>${bookRoom.id}</td>
-					<td>${bookRoom.getHotel().getLocation() }</td>
-					<td>${bookRoom.getHotel().getName() }</td>
+					<td>${bookRoom.getHotel().getLocation()}</td>
+					<td>${bookRoom.getHotel().getName()}</td>
 					<td>${bookRoom.getRoom().getName()}</td>
 					<td>${bookRoom.getRoom().getRoomType()}</td>
 					<td>${bookRoom.amountPeople}</td>
-					<td>${bookRoom.checkInDate}</td>
-					<td>${bookRoom.checkOutDate}</td>
-					<td>${ String.format("%.0f", bookRoom.getRoom().getPrice())}</td>
-					<td></td>
+					<td>${bookRoom.getFormatDate(bookRoom.checkInDate)}</td>
+					<td>${bookRoom.getFormatDate(bookRoom.checkOutDate)}</td>
+					<td>${String.format("%.0f", bookRoom.getRoom().getPrice())}</td>
+					<td>${bookRoom.getNumberDays()}</td>
+					<td>${String.format("%.0f", bookRoom.getNumberDays() * bookRoom.getRoom().getPrice())}</td>
+					<td><a href="/booking-info-delete?id=${bookRoom.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 
