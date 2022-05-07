@@ -150,7 +150,7 @@ $(function () {
             async: false,
             success: function (response) {
                 if (response == "success") {
-                    window.location = "/booking-success"; 
+                    window.location = "/booking-info"; 
                 }
                 else {
                 	alert("Save fail");
