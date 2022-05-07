@@ -15,7 +15,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table hotels.book_rooms
-DROP TABLE IF EXISTS `book_rooms`;
 CREATE TABLE IF NOT EXISTS `book_rooms` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `room_id` int(50) NOT NULL,
@@ -36,7 +35,6 @@ INSERT INTO `book_rooms` (`id`, `room_id`, `user_id`, `hotel_id`, `amount_people
 	(17, 345, 1, 1, 3, '2022-05-07 00:00:00', '2022-05-09 00:00:00');
 
 -- Dumping structure for table hotels.customers
-DROP TABLE IF EXISTS `customers`;
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -50,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `customers` (
 -- Dumping data for table hotels.customers: ~0 rows (approximately)
 
 -- Dumping structure for table hotels.devices
-DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -61,7 +58,6 @@ CREATE TABLE IF NOT EXISTS `devices` (
 -- Dumping data for table hotels.devices: ~0 rows (approximately)
 
 -- Dumping structure for table hotels.device_rooms
-DROP TABLE IF EXISTS `device_rooms`;
 CREATE TABLE IF NOT EXISTS `device_rooms` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `room_id` int(50) NOT NULL,
@@ -75,7 +71,6 @@ CREATE TABLE IF NOT EXISTS `device_rooms` (
 -- Dumping data for table hotels.device_rooms: ~0 rows (approximately)
 
 -- Dumping structure for table hotels.hotels
-DROP TABLE IF EXISTS `hotels`;
 CREATE TABLE IF NOT EXISTS `hotels` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -117,7 +112,6 @@ INSERT INTO `hotels` (`id`, `name`, `phone_number`, `email`, `address`, `locatio
 	(28, 'An Phu Hotel', '0268953015', 'anphuhotel@gmail.com', '185 Đường 30 Tháng 4, TT. Dương Đông, Phú Quốc, Kiên Giang, Việt Nam', 'phuquoc');
 
 -- Dumping structure for table hotels.rooms
-DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE IF NOT EXISTS `rooms` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -140,7 +134,6 @@ INSERT INTO `rooms` (`id`, `name`, `hotel_id`, `status`, `room_type`, `price`) V
 	(431, '431', 2, b'0', 'Normal', 435000);
 
 -- Dumping structure for table hotels.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
