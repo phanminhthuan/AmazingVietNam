@@ -145,7 +145,7 @@ $(function () {
 				"check_in_date": $("input[name='check_in_date']").val(),
 				"check_out_date": $("input[name='check_out_date']").val()
             }),
-
+            
             success: function (response) {
                 if (response == "success") {
                     window.location = "/booking-info"; 
