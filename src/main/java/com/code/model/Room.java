@@ -1,5 +1,7 @@
 package com.code.model;
 
+import java.text.DecimalFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,12 +30,12 @@ public class Room {
 	private String roomType;
 	
 	@Column(name = "price")
-	private Float price;
+	private Double price;
 	
 	public Room() {
 	}
 
-	public Room(int id, String name,int hotelId, Boolean status, String roomType, Float price ) {
+	public Room(int id, String name,int hotelId, Boolean status, String roomType, Double price ) {
 		this.id = id;
 		this.name = name;
 		this.hotelId = hotelId;
@@ -77,10 +79,15 @@ public class Room {
 		this.roomType = roomType;
 	}
 	
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setFloorId(Float price) {
+	public void setFloorId(Double price) {
 		this.price = price;
+	}
+	
+	public String getPriceFormat(Double price) {
+		 DecimalFormat df = new DecimalFormat("0");
+		 return df.format(price);
 	}
 }

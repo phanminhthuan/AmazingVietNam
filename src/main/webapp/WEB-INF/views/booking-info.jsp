@@ -72,9 +72,9 @@ tr:nth-child(even) {
 					<td>${bookRoom.amountPeople}</td>
 					<td>${bookRoom.getFormatDate(bookRoom.checkInDate)}</td>
 					<td>${bookRoom.getFormatDate(bookRoom.checkOutDate)}</td>
-					<td>${String.format("%.0f", bookRoom.getRoom().getPrice())}</td>
+					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getRoom().getPrice())}</td>
 					<td>${bookRoom.getNumberDays()}</td>
-					<td>${String.format("%.0f", bookRoom.getNumberDays() * bookRoom.getRoom().getPrice())}</td>
+					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getNumberDays() * bookRoom.getRoom().getPrice())}</td>
 					<td><a href="/booking-info-delete?id=${bookRoom.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
