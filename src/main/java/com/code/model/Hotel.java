@@ -27,20 +27,20 @@ public class Hotel {
 	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "location")
-	private String location;
+	@Column(name = "location_id")
+	private int locationId;
 	
 	public Hotel() {
 	}
 
 	public Hotel(int id, String name, String phoneNumber, String email,
-			String address, String location) {
+			String address, int locationId) {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.address = address;
-		this.location = location;
+		this.locationId = locationId;
 	}
 
 	public int getId() {
@@ -78,10 +78,10 @@ public class Hotel {
 		this.address = address;
 	}
 	
-	public String getLocation() {
-		return location;
+	public int getLocationId() {
+		return locationId;
 	}
-	public void set(String location) {
-		this.location = location;
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
 	}
 }

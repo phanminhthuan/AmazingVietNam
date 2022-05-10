@@ -55,19 +55,21 @@
 	</h1>
 
 	<div class="box-container">
-		<c:forEach var="location" items="${locations}">
+		<c:forEach var="bookRoom" items="${bookRooms}">
 			<div class="box">
-				<img src="${location.getImageUrl()}">
+				<img src="resources/img/sapa.jpg">
 				<div class="content">
 					<h3>
-						<i class="fas fa-map-marker-alt"></i> <span>${location.getName()}</span>
+						<i class="fas fa-map-marker-alt"></i> Sapa
 					</h3>
-					<p>${location.getDescription()}</p>
+					<p>Sapa nằm ở Tây Bắc Việt Nam, nơi nổi tiếng với những ruộng
+						bậc thang nối tiếp nhau, trải dài như chạm đến chân trời cùng đỉnh
+						Fansipan - nóc nhà Đông Dương</p>
 					<div class="stars">
-					<c:forEach var="star" items="${stars}">
-						<i class="${location.getStarClass(star)} fa-star"></i>
-					</c:forEach>
-						
+						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="far fa-star"></i>
+	
 					</div>
 					<div></div>
 					<a href="/booking" class="btn">Đặt ngay</a>
@@ -75,6 +77,9 @@
 			</div>
 		</c:forEach>
 	</div>
+
+
+
 
 </section>
 
@@ -85,28 +90,10 @@
 <section class="services" id="services">
 
 	<h1 class="heading">
-		<span>T</span> 
-		<span>i</span> 
-		<span>ệ</span> 
-		<span>n</span> 
-		<span
-			class="space">
-		</span> 
-		<span>í</span> 
-		<span>c</span> 
-		<span>h</span> 
-		<span
-			class="space">
-		</span> 
-		<span>D</span> 
-		<span>ị</span> 
-		<span>c</span> 
-		<span>h</span>
-		<span 
-		class="space">
-		</span> 
-		<span>V</span> 
-		<span>ụ</span>
+		<span>T</span> <span>i</span> <span>ệ</span> <span>n</span> <span
+			class="space"></span> <span>í</span> <span>c</span> <span>h</span> <span
+			class="space"></span> <span>D</span> <span>ị</span> <span>c</span> <span>h</span>
+		<span class="space"></span> <span>V</span> <span>ụ</span>
 
 	</h1>
 

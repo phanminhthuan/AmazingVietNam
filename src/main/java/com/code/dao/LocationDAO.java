@@ -6,55 +6,47 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.code.model.Hotel;
+import com.code.model.Location;
 
-@Repository(value = "hotelDAO")
-public class HotelDAO {
+@Repository(value = "locationDAO")
+public class LocationDAO {
   
   @Autowired
   private SessionFactory sessionFactory;
   
-  public void save(Hotel hotel) {
+  public void save(Location location) {
     Session session = this.sessionFactory.openSession();
     Transaction tx = session.beginTransaction();
-    session.persist(hotel);
+    session.persist(location);
     tx.commit();
     session.close();
   }
   
-  public void update(Hotel hotel) {
+  public void update(Location location) {
     Session session = this.sessionFactory.openSession();
     Transaction tx = session.beginTransaction();
-    session.update(hotel);
+    session.update(location);
     tx.commit();
     session.close();
   }
   
-  public List<Hotel> findAll() {
+  public List<Location> findAll() {
     Session session = this.sessionFactory.openSession();
-    List<Hotel> result = session.createQuery("FROM Hotel", Hotel.class).getResultList();
+    List<Location> result = session.createQuery("FROM Location", Location.class).getResultList();
     return result;
   }
   
-  public List<Hotel> findByLocationId(int locationId) {
+  public List<Location> findByName(String name) {
     Session session = this.sessionFactory.openSession();
-    List<Hotel> result = session.createQuery("FROM Hotel where location_id = :locationId", Hotel.class)
-    .setParameter("locationId", locationId).getResultList();
+    List<Location> result = session.createQuery("FROM Location where name = :name", Location.class)
+    .setParameter("name", name).getResultList();
     session.close();
     return result;
   }
   
-  public Hotel findById(int id) {
+  public Location findById(int id) {
     Session session = this.sessionFactory.openSession();
-    Hotel model = session.find(Hotel.class, id);
+    Location model = session.find(Location.class, id);
     return model;
-  }
-  
-  public void delete(Hotel hotel) {
-    Session session = this.sessionFactory.openSession();
-    Transaction tx = session.beginTransaction();
-    session.delete(hotel);
-    tx.commit();
-    session.close();
   }
 }

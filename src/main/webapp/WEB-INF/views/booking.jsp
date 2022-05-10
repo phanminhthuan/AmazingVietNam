@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <%@ include file="common/header.jspf"%>
 
 <!-- book section starts  -->
@@ -29,16 +32,10 @@
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
 				<select id="location">
-					<option value="" disabled selected> Chọn địa điểm bạn muốn đến</option>
-					<option value="sapa">Sapa</option>
-					<option value="vinhhalong">Vịnh Hạ Long</option>
-					<option value="danang">Đà Nẵng</option>
-					<option value="hoian">Hội An</option>
-					<option value="nhatrang">Nha Trang</option>
-					<option value="dalat">Đà Lạt</option>
-					<option value="vungtau">Vũng Tàu</option>
-					<option value="dongthap">Đồng Tháp</option>
-					<option value="phuquoc">Phú Quốc</option>
+					<option value="0" disabled selected> Chọn địa điểm bạn muốn đến</option>
+					<c:forEach var="location" items="${locations}">
+						<option value="${location.getId()}">${location.getName()}</option>
+					</c:forEach>
 				</select>
 			</div>
 			
@@ -89,7 +86,7 @@ $(function () {
     	}
     	
         $.ajax({
-            url: '/booking-get-hotels?location=' + value,
+            url: '/booking-get-hotels?locationId=' + value,
             type: "GET",
             success: function (response) {
                 if (response) {

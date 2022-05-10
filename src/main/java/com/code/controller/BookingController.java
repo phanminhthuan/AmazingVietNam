@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.code.dao.BookRoomDAO;
 import com.code.dao.HotelDAO;
+import com.code.dao.LocationDAO;
 import com.code.dao.RoomDAO;
 import com.code.model.BookRoom;
 import com.code.model.Hotel;
+import com.code.model.Location;
 import com.code.model.Room;
 
 @Controller
@@ -28,9 +31,13 @@ public class BookingController {
 	private RoomDAO roomDAO;
 	@Autowired
 	private BookRoomDAO bookRoomDAO;
+	@Autowired
+	private LocationDAO locationDAO;
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String booking() {
+	public String booking(Model model) {
+		List<Location> locations = locationDAO.findAll();
+		model.addAttribute("locations", locations);
 		return "booking";
 	}
 	
@@ -41,9 +48,9 @@ public class BookingController {
 	
 	@RequestMapping(value = "/booking-get-hotels", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Hotel> getHotel(String location) {
-		if (location == null || location.isEmpty()) return null;
-		List<Hotel> hotels = hotelDAO.findByLocation(location);
+	public List<Hotel> getHotel(int locationId) {
+		if (locationId == 0) return null;
+		List<Hotel> hotels = hotelDAO.findByLocationId(locationId);
 		return hotels;
 	}
 	

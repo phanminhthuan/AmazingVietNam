@@ -65,16 +65,16 @@ tr:nth-child(even) {
 			<c:forEach var="bookRoom" items="${bookRooms}">
 				<tr>
 					<td>${bookRoom.id}</td>
-					<td>${bookRoom.getHotel().getLocation()}</td>
+					<td>${bookRoom.getHotel().getLocationId()}</td>
 					<td>${bookRoom.getHotel().getName()}</td>
 					<td>${bookRoom.getRoom().getName()}</td>
 					<td>${bookRoom.getRoom().getRoomType()}</td>
 					<td>${bookRoom.amountPeople}</td>
 					<td>${bookRoom.getFormatDate(bookRoom.checkInDate)}</td>
 					<td>${bookRoom.getFormatDate(bookRoom.checkOutDate)}</td>
-					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getRoom().getPrice())}</td>
+					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getRoom().getPrice())} VNĐ</td>
 					<td>${bookRoom.getNumberDays()}</td>
-					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getNumberDays() * bookRoom.getRoom().getPrice())}</td>
+					<td>${bookRoom.getRoom().getPriceFormat(bookRoom.getNumberDays() * bookRoom.getRoom().getPrice())} VNĐ</td>
 					<td><a href="/booking-info-delete?id=${bookRoom.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
