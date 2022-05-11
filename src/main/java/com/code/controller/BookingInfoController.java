@@ -17,14 +17,14 @@ public class BookingInfoController {
 	private BookRoomDAO bookRoomDAO;
 	
 	@RequestMapping(value = "/booking-info", method = RequestMethod.GET)
-	public String index(Model model) {
+	public String bookingInfo(Model model) {
 		List<BookRoom> bookRooms = bookRoomDAO.findAll();
 		model.addAttribute("bookRooms", bookRooms);
 		return "booking-info";
 	}
 	
 	@RequestMapping(value = "/booking-info-delete", method = RequestMethod.GET)
-	public String index(String id) {
+	public String bookingInfoDelete(String id) {
 		BookRoom bookRoom = bookRoomDAO.findById(Integer.parseInt(id));
 		bookRoomDAO.delete(bookRoom);
 		return "redirect:booking-info";

@@ -45,12 +45,18 @@
 			</a>
 		</div>
 		
-		<form action="" class="search-bar-container">
+		<div class="search-bar-container">
             <input type="search" id="search-bar"
                 placeholder="Nhập điều bạn muốn tìm..." onkeyup="searchfunc()">
-            <label for="search-bar" class="fas fa-search"></label>
-        </form>
+            <label for="search-bar" class="fas fa-search" onclick="gotoSearch()"></label>
+        </div>
 
 	</header>
 
 	<!-- header section ends -->
+	
+	<script type="text/javascript">
+		function gotoSearch() {
+			window.location = '/search?locationName=' + encodeURIComponent($('#search-bar').val());
+		}
+	</script>

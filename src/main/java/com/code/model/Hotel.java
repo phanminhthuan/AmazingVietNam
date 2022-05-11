@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +31,17 @@ public class Hotel {
 	
 	@Column(name = "location_id")
 	private int locationId;
+	
+	@OneToOne(optional=false)
+	@JoinColumn(name = "location_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private Location location;
+	 
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 	
 	public Hotel() {
 	}

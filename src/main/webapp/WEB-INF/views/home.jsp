@@ -70,7 +70,7 @@
 						
 					</div>
 					<div></div>
-					<a href="/booking" class="btn">Đặt ngay</a>
+					<a href="/booking?hotelId=${hotel.getId()}" class="btn">Đặt ngay</a>
 				</div>
 			</div>
 		</c:forEach>

@@ -65,7 +65,7 @@ tr:nth-child(even) {
 			<c:forEach var="bookRoom" items="${bookRooms}">
 				<tr>
 					<td>${bookRoom.id}</td>
-					<td>${bookRoom.getHotel().getLocationId()}</td>
+					<td>${bookRoom.getHotel().getLocation().getName()}</td>
 					<td>${bookRoom.getHotel().getName()}</td>
 					<td>${bookRoom.getRoom().getName()}</td>
 					<td>${bookRoom.getRoom().getRoomType()}</td>

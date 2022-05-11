@@ -32,9 +32,12 @@
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
 				<select id="location">
-					<option value="0" disabled selected> Chọn địa điểm bạn muốn đến</option>
+					<option value="0"> Chọn địa điểm bạn muốn đến</option>
 					<c:forEach var="location" items="${locations}">
-						<option value="${location.getId()}">${location.getName()}</option>
+						<option value="${location.getId()}" 
+							${location.getId() == hotel.getLocationId() ? "selected" : ""}>
+							${location.getName()}
+						</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -42,14 +45,25 @@
 			<div class="inputBox">
 				<h3>Khách Sạn</h3>
 				<select id="hotel" name="hotel_id">
-					<option value="" disabled selected> Chọn khách sạn</option>
+					<option value="0"> Chọn khách sạn</option>
+					<c:forEach var="hotelItem" items="${hotels}">
+						<option value="${hotelItem.getId()}" 
+							${hotelItem.getId() == hotel.getId() ? "selected" : ""}>
+							${hotelItem.getName()}
+						</option>
+					</c:forEach>
 				</select>
 			</div>
 			
 			<div class="inputBox">
 				<h3>Số phòng</h3>
 				<select id="room" name="room_id">
-					<option value="" disabled selected> Chọn phòng</option>
+					<option value="0"> Chọn phòng</option>
+					<c:forEach var="room" items="${rooms}">
+						<option value="${room.getId()}">
+							${room.getName()}
+						</option>
+					</c:forEach>
 				</select>
 			</div>
 			

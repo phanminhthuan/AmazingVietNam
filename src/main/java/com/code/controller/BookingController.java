@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.code.dao.BookRoomDAO;
@@ -35,9 +36,24 @@ public class BookingController {
 	private LocationDAO locationDAO;
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String booking(Model model) {
+	public String booking(Model model, 
+			@RequestParam(name="hotelId", required=false, defaultValue="0") int hotelId) {
 		List<Location> locations = locationDAO.findAll();
+		Hotel hotel = null;
+		List<Hotel> hotels= null;
+		List<Room> rooms = null;
+		
+		if (hotelId != 0) {
+			hotel = hotelDAO.findById(hotelId);
+			hotels = hotelDAO.findByLocationId(hotel.getLocationId());
+			rooms = roomDAO.findByHotelId(hotel.getId());
+		}
+		
 		model.addAttribute("locations", locations);
+		model.addAttribute("hotel", hotel);
+		model.addAttribute("hotels", hotels);
+		model.addAttribute("rooms", rooms);
+
 		return "booking";
 	}
 	
