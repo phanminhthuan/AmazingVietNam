@@ -41,7 +41,7 @@ tr:nth-child(even) {
 	background-color: #dddddd;
 }
 </style>
-
+<!--Xuất thông tin đặt phòng-->
 <body>
 	<div class="container">
 		<h2>Thông Tin Đặt Phòng</h2>
@@ -82,8 +82,6 @@ tr:nth-child(even) {
 		</table>
 	</div>
 </body>
-
-
 
 
 

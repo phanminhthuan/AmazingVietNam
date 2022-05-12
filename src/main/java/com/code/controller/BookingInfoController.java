@@ -18,7 +18,7 @@ public class BookingInfoController {
 	
 	@RequestMapping(value = "/booking-info", method = RequestMethod.GET)
 	public String bookingInfo(Model model) {
-		List<BookRoom> bookRooms = bookRoomDAO.findAll();
+		List<BookRoom> bookRooms = bookRoomDAO.findAllNoDeleted();
 		model.addAttribute("bookRooms", bookRooms);
 		return "booking-info";
 	}
@@ -26,7 +26,8 @@ public class BookingInfoController {
 	@RequestMapping(value = "/booking-info-delete", method = RequestMethod.GET)
 	public String bookingInfoDelete(String id) {
 		BookRoom bookRoom = bookRoomDAO.findById(Integer.parseInt(id));
-		bookRoomDAO.delete(bookRoom);
+		bookRoom.setDeleted(true); 
+		bookRoomDAO.update(bookRoom);
 		return "redirect:booking-info";
 	}
 }

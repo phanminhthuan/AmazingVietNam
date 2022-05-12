@@ -64,12 +64,10 @@
 					</h3>
 					<p>${location.getDescription()}</p>
 					<div class="stars">
-					<c:forEach var="star" items="${stars}">
-						<i class="${location.getStarClass(star)} fa-star"></i>
-					</c:forEach>
-						
+						<c:forEach var="star" items="${stars}">
+							<i class="${location.getStarClass(star)} fa-star"></i>
+						</c:forEach>
 					</div>
-					<div></div>
 					<a href="/booking?hotelId=${hotel.getId()}" class="btn">Đặt ngay</a>
 				</div>
 			</div>
@@ -78,9 +76,9 @@
 
 </section>
 
-<!-- packages section ends -->
+<!--  -->
 
-<!-- services section starts  -->
+<!--   -->
 
 <section class="services" id="services">
 
@@ -155,17 +153,29 @@
 
 </section>
 
-<!-- services section ends -->
+<!--  -->
 
-<!-- gallery section starts  -->
+<!--  -->
 
 <section class="gallery" id="gallery">
 
 	<h1 class="heading">
-		<span>B</span> <span>à</span> <span>i</span> <span class="space"></span>
-		<span>V</span> <span>i</span> <span>ế</span> <span>t</span> <span
-			class="space"></span> <span>N</span> <span>ổ</span> <span>i</span> <span
-			class="space"></span> <span>B</span> <span>ậ</span> <span>t</span>
+		<span>B</span> 
+		<span>à</span> 
+		<span>i</span> 
+		<span class="space"></span>
+		<span>V</span> 
+		<span>i</span> 
+		<span>ế</span> 
+		<span>t</span> 
+		<span class="space"></span> 
+		<span>N</span> 
+		<span>ổ</span> 
+		<span>i</span> 
+		<span class="space"></span> 
+		<span>B</span> 
+		<span>ậ</span> 
+		<span>t</span>
 
 
 	</h1>
@@ -255,22 +265,35 @@
 		</div>
 </section>
 
-<!-- gallery section ends -->
+<!--  -->
 
-<!-- review section starts  -->
+<!--   -->
 
 
 
 <!-- Hết đánh giá review -->
-<!-- review section starts  -->
+<!--   -->
 
 <section class="review" id="review">
 
 	<h1 class="heading">
-		<span>B</span> <span>à</span> <span>i</span> <span class="space"></span>
-		<span>V</span> <span>i</span> <span>ế</span> <span>t</span> <span
-			class="space"></span> <span>Đ</span> <span>á</span> <span>n</span> <span>h</span>
-		<span class="space"></span> <span>G</span> <span>i</span> <span>á</span>
+		<span>B</span> 
+		<span>à</span>
+		<span>i</span> 
+		<span class="space"></span>
+		<span>V</span> 
+		<span>i</span> 
+		<span>ế</span> 
+		<span>t</span> 
+		<span class="space"></span> 
+		<span>Đ</span> 
+		<span>á</span> 
+		<span>n</span> 
+		<span>h</span>
+		<span class="space"></span> 
+		<span>G</span> 
+		<span>i</span> 
+		<span>á</span>
 	</h1>
 
 	<div class="swiper-container review-slider">
@@ -339,7 +362,7 @@
 
 </section>
 
-<!-- review section ends -->
+<!--  -->
 
 <%@ include file="common/footer.jspf"%>
 

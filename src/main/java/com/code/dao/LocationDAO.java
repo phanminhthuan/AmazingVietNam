@@ -33,6 +33,7 @@ public class LocationDAO {
   public List<Location> findAll() {
     Session session = this.sessionFactory.openSession();
     List<Location> result = session.createQuery("FROM Location", Location.class).getResultList();
+    session.close();
     return result;
   }
   

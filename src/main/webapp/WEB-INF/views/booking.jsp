@@ -31,7 +31,7 @@
 		<form action="#">
 			<div class="inputBox">
 				<h3>Nơi đến</h3>
-				<select id="location">
+				<select name="location_id" id="location">
 					<option value="0"> Chọn địa điểm bạn muốn đến</option>
 					<c:forEach var="location" items="${locations}">
 						<option value="${location.getId()}" 
@@ -143,7 +143,38 @@ $(function () {
     });
     
     $(".btn").click(function (e) {
-
+    	
+    	if($("select[name='location_id']").val() == null || $("select[name='location_id']").val() == "0"){
+			alert("Vui lòng chọn địa điểm");
+			return;
+		}
+    	
+		if($("select[name='hotel_id']").val() == null || $("select[name='hotel_id']").val() == "0"){
+			alert("Vui lòng chọn khách sạn");
+			return;
+		}
+		
+		if($("select[name='room_id']").val() == null || $("select[name='r_id']").val() == "0"){
+			alert("Vui lòng chọn phòng");
+			return;
+		}
+		
+		if(!$("input[name='amount_people']").val()){
+			alert("Vui lòng nhập số người");
+			return;
+		}
+		
+		if($("input[name='check_in_date']").val() == ""){
+			alert("Vui lòng chọn ngày check in");
+			return;
+		}
+		
+		if($("input[name='check_out_date']").val() == ""){
+			alert("Vui lòng chọn ngày check out");
+			return;
+		}
+		
+		
         $.ajax({
             url: '/booking-save',
             type: "POST",
@@ -162,7 +193,7 @@ $(function () {
                     window.location = "/booking-info"; 
                 }
                 else {
-                	alert("Save fail");
+                	alert("Phòng đã có người đặt");
                 }	
             }
         });

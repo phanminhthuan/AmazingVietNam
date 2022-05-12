@@ -81,7 +81,6 @@ public class BookingController {
 	@RequestMapping(value = "/booking-save", method = RequestMethod.POST)
 	@ResponseBody
 	public String BookingSave(@RequestBody Map<String, String> payload) {
-		System.out.println(payload);
 		BookRoom model = new BookRoom();
 		model.setUserId(Integer.parseInt(payload.get("user_id")));
 		model.setRoomId(Integer.parseInt(payload.get("room_id")));
@@ -98,7 +97,12 @@ public class BookingController {
 			e.printStackTrace();
 		}
 	    
-		bookRoomDAO.save(model);
-		return "success";
+	    List<BookRoom> bookRooms = bookRoomDAO.checkBooking(model);
+	    if(bookRooms.size() == 0){
+	    	bookRoomDAO.save(model);
+	    	return "success";
+	    }
+	    
+	    return "fail";
 	}
 }

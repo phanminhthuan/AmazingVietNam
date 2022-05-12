@@ -38,6 +38,9 @@ public class BookRoom {
 
 	@Column(name = "check_out_date")
 	private Date checkOutDate;
+	
+	@Column(name = "deleted")
+	private Boolean deleted;	
 
 	@ManyToOne(optional=false)
 	@JoinColumn(name = "hotel_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -64,8 +67,8 @@ public class BookRoom {
 	public BookRoom() {
 	}
 
-	public BookRoom(int id, int roomId, int userId, int hotelId, int amountPeople, Date checkInDate, Date checkOutDate
-			) {
+	public BookRoom(int id, int roomId, int userId, int hotelId, int amountPeople, Date checkInDate, 
+			Date checkOutDate, Boolean deleted) {
 		this.id = id;
 		this.roomId = roomId;
 		this.userId = userId;
@@ -73,6 +76,7 @@ public class BookRoom {
 		this.amountPeople = amountPeople;
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
+		this.deleted = deleted;
 	}
 
 	public int getId() {
@@ -123,6 +127,13 @@ public class BookRoom {
 	}
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
+	}
+	
+	public Boolean getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
 	}
 	
 	public String getFormatDate(Date date) {
