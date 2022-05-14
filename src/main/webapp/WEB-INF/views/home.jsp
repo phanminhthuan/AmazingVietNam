@@ -82,20 +82,7 @@
 
 <section class="services" id="services">
 
-	<h1 class="heading">
-		<span>T</span> 
-		<span>i</span> 
-		<span>ệ</span> 
-		<span>n</span> 
-		<span
-			class="space">
-		</span> 
-		<span>í</span> 
-		<span>c</span> 
-		<span>h</span> 
-		<span
-			class="space">
-		</span> 
+	<h1 class="heading"> 
 		<span>D</span> 
 		<span>ị</span> 
 		<span>c</span> 

@@ -69,14 +69,14 @@
 			
 			<div class="inputBox">
 				<h3>Số người</h3>
-				<input type="number" min="0" placeholder="Chọn số người chuyến đi" name="amount_people">
+				<input type="number" min="1" placeholder="Chọn số người chuyến đi" name="amount_people">
 			</div>
 			<div class="inputBox">
-				<h3>Ngày đi</h3>
+				<h3>Ngày đặt phòng</h3>
 				<input type="date" name="check_in_date">
 			</div>
 			<div class="inputBox">
-				<h3>Ngày về</h3>
+				<h3>Ngày trả phòng</h3>
 				<input type="date" name="check_out_date">
 			</div>
 			<input type="button" class="btn" value="Đặt Phòng">
@@ -165,12 +165,12 @@ $(function () {
 		}
 		
 		if($("input[name='check_in_date']").val() == ""){
-			alert("Vui lòng chọn ngày check in");
+			alert("Vui lòng chọn ngày đặt phòng");
 			return;
 		}
 		
 		if($("input[name='check_out_date']").val() == ""){
-			alert("Vui lòng chọn ngày check out");
+			alert("Vui lòng chọn ngày trả phòng");
 			return;
 		}
 		
