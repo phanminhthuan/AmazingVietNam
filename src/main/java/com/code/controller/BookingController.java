@@ -86,6 +86,7 @@ public class BookingController {
 		model.setRoomId(Integer.parseInt(payload.get("room_id")));
 		model.setHotelId(Integer.parseInt(payload.get("hotel_id")));
 		model.setAmountPeople(Integer.parseInt(payload.get("amount_people")));
+		model.setDeleted(false);
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	    try {

@@ -54,7 +54,7 @@ public class BookRoomDAO {
   
   public List<BookRoom> findAllNoDeleted() {
 	    Session session = this.sessionFactory.openSession();
-	    List<BookRoom> result = session.createQuery("FROM BookRoom where deleted = false", BookRoom.class).getResultList();
+	    List<BookRoom> result = session.createQuery("FROM BookRoom where deleted = 0", BookRoom.class).getResultList();
 	    session.close();
 	    return result;
 	    
@@ -63,9 +63,9 @@ public class BookRoomDAO {
   public List<BookRoom> checkBooking(BookRoom bookRoom) {
 	    Session session = this.sessionFactory.openSession();
 	    List<BookRoom> result = session.createQuery("FROM BookRoom where room_id = :roomId and hotel_id = :hotelId "
-	    		+ "and (check_in_date between :checkInDate and :checkOutDate) "
-	    		+ "and (check_out_date between :checkInDate and :checkOutDate) "
-	    		+ "and deleted = false", BookRoom.class)
+	    		+ "and ((check_in_date between :checkInDate and :checkOutDate) "
+	    		+ "or (check_out_date between :checkInDate and :checkOutDate)) "
+	    		+ "and deleted = 0", BookRoom.class)
 	    .setParameter("checkOutDate", bookRoom.getCheckOutDate())
 	    .setParameter("checkInDate", bookRoom.getCheckInDate())
 	    .setParameter("hotelId", bookRoom.getHotelId())
