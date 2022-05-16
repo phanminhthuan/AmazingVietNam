@@ -79,21 +79,32 @@
 				<h3>Ngày trả phòng</h3>
 				<input type="date" name="check_out_date">
 			</div>
+			<div class="inputBox">
+				<h3>Họ Và Tên</h3>
+				<input type="text" placeholder="Nhập họ & tên" name="customer_name">
+			</div>
+			<div class="inputBox">
+				<h3>Số điện thoại</h3>
+				<input type="tel" maxlength="10" placeholder="Nhập số điện thoại" name="phone_number">
+			</div>
 			<input type="button" class="btn" value="Đặt Phòng">
+			
+			
+			<div id="message" style="font-size: 16px; color: red; margin-top: 20px;"></div>
 		</form>
 	</div>
 
 </section>
 <!--  -->
 <script type="text/javascript">
-//Chọn 
+//tự động chọn phòng
 $(function () {
-	var optionsRoom = '<option value="" disabled selected> Chọn phòng</option>';
+	var optionsRoom = '<option value="0" selected> Chọn phòng</option>';
 	
     $("#location").change(function () {
     	const value = $(this).val();
     	$("#room").html(optionsRoom);
-    	var options = '<option value="" disabled selected> Chọn khách sạn</option>';
+    	var options = '<option value="0" selected> Chọn khách sạn</option>';
     	if(value === "") {
     		$("#hotel").html(options);
     		return;
@@ -143,37 +154,55 @@ $(function () {
     });
     
     $(".btn").click(function (e) {
+    	$("#message").html("");
     	
     	if($("select[name='location_id']").val() == null || $("select[name='location_id']").val() == "0"){
-			alert("Vui lòng chọn địa điểm");
+    		$("#message").html("Vui lòng chọn địa điểm");
+    		$("select[name='location_id']").focus();
 			return;
 		}
     	
 		if($("select[name='hotel_id']").val() == null || $("select[name='hotel_id']").val() == "0"){
-			alert("Vui lòng chọn khách sạn");
+			$("#message").html("Vui lòng chọn khách sạn");
+			$("select[name='hotel_id']").focus();
 			return;
 		}
 		
-		if($("select[name='room_id']").val() == null || $("select[name='r_id']").val() == "0"){
-			alert("Vui lòng chọn phòng");
+		if($("select[name='room_id']").val() == null || $("select[name='room_id']").val() == "0"){
+			$("#message").html("Vui lòng chọn phòng");
+			$("select[name='room_id']").focus();
 			return;
 		}
 		
 		if(!$("input[name='amount_people']").val()){
-			alert("Vui lòng nhập số người");
+			$("#message").html("Vui lòng nhập số người");
+			$("input[name='amount_people']").focus();
 			return;
 		}
 		
 		if($("input[name='check_in_date']").val() == ""){
-			alert("Vui lòng chọn ngày đặt phòng");
+			$("#message").html("Vui lòng chọn ngày đặt phòng");
+			$("input[name='check_in_date']").focus();
 			return;
 		}
 		
 		if($("input[name='check_out_date']").val() == ""){
-			alert("Vui lòng chọn ngày trả phòng");
+			$("#message").html("Vui lòng chọn ngày trả phòng");
+			$("input[name='check_out_date']").focus();
 			return;
 		}
 		
+		if($("input[name='full_name']").val() == ""){
+			$("#message").html("Vui lòng nhập họ và tên");
+			$("input[name='full_name']").focus();
+			return;
+		}
+		
+		if($("input[name='phone_number']").val() == ""){
+			$("#message").html("Vui lòng nhập số điện thoại");
+			$("input[name='phone_number']").focus();
+			return;
+		}
 		
         $.ajax({
             url: '/booking-save',
@@ -185,7 +214,9 @@ $(function () {
 				"hotel_id": $("select[name='hotel_id']").val(),
 				"amount_people": $("input[name='amount_people']").val(),
 				"check_in_date": $("input[name='check_in_date']").val(),
-				"check_out_date": $("input[name='check_out_date']").val()
+				"check_out_date": $("input[name='check_out_date']").val(),
+				"full_name": $("input[name='full_name']").val(),
+				"phone_number": $("input[name='phone_number']").val(),
             }),
             
             success: function (response) {

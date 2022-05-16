@@ -32,16 +32,20 @@ public class Room {
 	@Column(name = "price")
 	private Double price;
 	
+	@Column(name = "image_url")
+	private String imageUrl;
+	
 	public Room() {
 	}
 
-	public Room(int id, String name,int hotelId, Boolean status, String roomType, Double price ) {
+	public Room(int id, String name,int hotelId, Boolean status, String roomType, Double price, String imageUrl ) {
 		this.id = id;
 		this.name = name;
 		this.hotelId = hotelId;
 		this.status = status;
 		this.roomType = roomType;
 		this.price = price;
+		this.imageUrl = imageUrl;
 	}
 
 	public int getId() {
@@ -84,6 +88,13 @@ public class Room {
 	}
 	public void setFloorId(Double price) {
 		this.price = price;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	public String getPriceFormat(Double price) {

@@ -32,6 +32,9 @@ public class Hotel {
 	@Column(name = "location_id")
 	private int locationId;
 	
+	@Column(name = "image_url")
+	private String imageUrl;
+	
 	@OneToOne(optional=false)
 	@JoinColumn(name = "location_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private Location location;
@@ -47,13 +50,14 @@ public class Hotel {
 	}
 
 	public Hotel(int id, String name, String phoneNumber, String email,
-			String address, int locationId) {
+			String address, int locationId, String imageUrl) {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.address = address;
 		this.locationId = locationId;
+		this.imageUrl = imageUrl;
 	}
 
 	public int getId() {
@@ -96,5 +100,12 @@ public class Hotel {
 	}
 	public void setLocationId(int locationId) {
 		this.locationId = locationId;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }

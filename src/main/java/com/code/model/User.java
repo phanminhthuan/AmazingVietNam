@@ -21,6 +21,9 @@ public class User {
 	@Column(name = "user_name")
 	private String userName;
 	
+	@Column(name = "phone_number")
+	private String phoneNumber;
+	
 	@Column(name = "password")
 	private String password;
 	
@@ -29,17 +32,22 @@ public class User {
 	
 	@Column(name = "email")
 	private String email;
-
+	
+	@Column(name = "address")
+	private String address;
+	
 	public User() {
 	}
 
-	public User(int id, String fullName, String userName, String password, Boolean status, String email) {
+	public User(int id, String fullName, String userName, String phoneNumber, String password, Boolean status, String email, String address) {
 		this.id = id;
 		this.fullName = fullName;
 		this.userName = userName;
+		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.status = status;
 		this.email = email;
+		this.address = address;
 	}
 
 	public int getId() {
@@ -54,6 +62,20 @@ public class User {
 	}
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+	
+	public String setUserName() {
+		return fullName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getPassword() {
@@ -75,5 +97,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

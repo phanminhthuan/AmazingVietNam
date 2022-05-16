@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.code.model.User;
 
 @Repository(value = "userDAO")
@@ -43,6 +44,14 @@ public class UserDAO {
     session.close();
     return model;
   }
+  
+  public User findByPhoneNumber(String phoneNumber) {
+		Session session = this.sessionFactory.openSession();
+		List<User> result = session.createQuery("FROM User WHERE phone_number =:phoneNumber", User.class)
+				.setParameter("phoneNumber", phoneNumber).getResultList();
+		session.close();
+		return result.size() > 0 ? result.get(0) : null;
+	}
   
   public void delete(User user) {
     Session session = this.sessionFactory.openSession();

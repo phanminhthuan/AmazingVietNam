@@ -19,10 +19,12 @@ import com.code.dao.BookRoomDAO;
 import com.code.dao.HotelDAO;
 import com.code.dao.LocationDAO;
 import com.code.dao.RoomDAO;
+import com.code.dao.UserDAO;
 import com.code.model.BookRoom;
 import com.code.model.Hotel;
 import com.code.model.Location;
 import com.code.model.Room;
+import com.code.model.User;
 
 @Controller
 public class BookingController {
@@ -34,6 +36,8 @@ public class BookingController {
 	private BookRoomDAO bookRoomDAO;
 	@Autowired
 	private LocationDAO locationDAO;
+	@Autowired
+	private UserDAO userDAO;
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String booking(Model model, 
@@ -97,6 +101,11 @@ public class BookingController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	    
+	    User user = userDAO.findByPhoneNumber(payload.get("phone_number"));
+	    if(user != null) {
+	    	
+	    }
 	    
 	    List<BookRoom> bookRooms = bookRoomDAO.checkBooking(model);
 	    if(bookRooms.size() == 0){
