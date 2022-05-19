@@ -81,7 +81,7 @@
 			</div>
 			<div class="inputBox">
 				<h3>Họ Và Tên</h3>
-				<input type="text" placeholder="Nhập họ & tên" name="customer_name">
+				<input type="text" placeholder="Nhập họ & tên" name="full_name">
 			</div>
 			<div class="inputBox">
 				<h3>Số điện thoại</h3>

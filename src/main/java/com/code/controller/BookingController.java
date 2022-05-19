@@ -103,9 +103,20 @@ public class BookingController {
 		}
 	    
 	    User user = userDAO.findByPhoneNumber(payload.get("phone_number"));
-	    if(user != null) {
-	    	
+	    if(user == null) {
+	    	user = new User();
+	    	user.setFullName(payload.get("full_name"));
+	    	user.setPhoneNumber(payload.get("phone_number"));
+	    	user.setPassword("123456");
+	    	user.setEmail("thuan2511@gmail.com");
+	    	user.setUserName(payload.get("full_name").replace(' ', '_'));
+	    	user.setStatus(true);
+	    	user.setAddress("");
+	    	userDAO.save(user);
+
 	    }
+    	model.setUserId(user.getId());	   
+	    
 	    
 	    List<BookRoom> bookRooms = bookRoomDAO.checkBooking(model);
 	    if(bookRooms.size() == 0){
