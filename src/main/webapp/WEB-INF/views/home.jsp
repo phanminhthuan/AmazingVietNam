@@ -68,7 +68,7 @@
 							<i class="${location.getStarClass(star)} fa-star"></i>
 						</c:forEach>
 					</div>
-					<a href="/booking?hotelId=${hotel.getId()}" class="btn">Đặt ngay</a>
+					<a href="/search?locationId=${location.getId()}" class="btn">Đặt ngay</a>
 				</div>
 			</div>
 		</c:forEach>
