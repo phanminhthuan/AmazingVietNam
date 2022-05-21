@@ -71,18 +71,18 @@ input[name="btn_search"]{
 		<table style="width: 100%">
 			<tr>
 				<th></th>
-				<th>Địa Điểm</th>
-				<th>Khách Sạn</th>
-				<th>Số Phòng</th>
-				<th>Loại Phòng</th>
-				<th>Họ Tên</th>
-				<th>Số Điện Thoại</th>
-				<th>Số Người</th>
-				<th>Ngày Đi</th>
-				<th>Ngày Về</th>
-				<th>Đơn Giá</th>
-				<th>Số Ngày</th>
-				<th>Thành Tiền</th>
+				<th style="white-space: nowrap;">Địa Điểm</th>
+				<th style="white-space: nowrap;">Khách Sạn</th>
+				<th style="white-space: nowrap;">Số Phòng</th>
+				<th style="white-space: nowrap;">Loại Phòng</th>
+				<th style="white-space: nowrap;">Họ Tên</th>
+				<th style="white-space: nowrap;">Số Điện Thoại</th>
+				<th style="white-space: nowrap;">Số Người</th>
+				<th style="white-space: nowrap;">Ngày Đi</th>
+				<th style="white-space: nowrap;">Ngày Về</th>
+				<th style="white-space: nowrap;">Đơn Giá</th>
+				<th style="white-space: nowrap;">Số Ngày</th>
+				<th style="white-space: nowrap;">Thành Tiền</th>
 				<th>Xóa</th>
 			</tr>
 
