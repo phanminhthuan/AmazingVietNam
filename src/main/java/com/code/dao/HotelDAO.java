@@ -33,6 +33,7 @@ public class HotelDAO {
   public List<Hotel> findAll() {
     Session session = this.sessionFactory.openSession();
     List<Hotel> result = session.createQuery("FROM Hotel", Hotel.class).getResultList();
+    session.close();
     return result;
   }
   
@@ -47,6 +48,7 @@ public class HotelDAO {
   public Hotel findById(int id) {
     Session session = this.sessionFactory.openSession();
     Hotel model = session.find(Hotel.class, id);
+    session.close();
     return model;
   }
   

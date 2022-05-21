@@ -48,6 +48,7 @@ public class LocationDAO {
   public Location findById(int id) {
     Session session = this.sessionFactory.openSession();
     Location model = session.find(Location.class, id);
+    session.close();
     return model;
   }
 }

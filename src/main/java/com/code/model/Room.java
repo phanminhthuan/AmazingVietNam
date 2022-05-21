@@ -98,7 +98,8 @@ public class Room {
 	}
 	
 	public String getPriceFormat(Double price) {
-		 DecimalFormat df = new DecimalFormat("0");
+		 DecimalFormat df = new DecimalFormat("###,###,###");
 		 return df.format(price);
 	}
+	
 }

@@ -62,7 +62,9 @@ public class BookingController {
 	}
 	
 	@RequestMapping(value = "/booking-success", method = RequestMethod.GET)
-	public String bookingSuccess() {
+	public String bookingSuccess(Model model, int bookRoomId) {
+		BookRoom bookRoom = bookRoomDAO.findById(bookRoomId);
+		model.addAttribute("bookRoom", bookRoom);
 		return "booking-success";
 	}
 	
@@ -80,6 +82,14 @@ public class BookingController {
 		if (hotelId == null || hotelId.isEmpty()) return null;
 		List<Room> rooms = roomDAO.findByHotelId(Integer.parseInt(hotelId));
 		return rooms;
+	}
+	
+	@RequestMapping(value = "/booking-get-room", method = RequestMethod.GET)
+	@ResponseBody
+	public Room getRoomById(String roomId) {
+		if (roomId == null || roomId.isEmpty()) return null;
+		Room room = roomDAO.findById(Integer.parseInt(roomId));
+		return room;
 	}
 
 	@RequestMapping(value = "/booking-save", method = RequestMethod.POST)
@@ -114,6 +124,9 @@ public class BookingController {
 	    	user.setAddress("");
 	    	userDAO.save(user);
 
+	    }else {
+	    	user.setFullName(payload.get("full_name"));
+	    	userDAO.update(user);
 	    }
     	model.setUserId(user.getId());	   
 	    
@@ -121,7 +134,7 @@ public class BookingController {
 	    List<BookRoom> bookRooms = bookRoomDAO.checkBooking(model);
 	    if(bookRooms.size() == 0){
 	    	bookRoomDAO.save(model);
-	    	return "success";
+	    	return String.valueOf(model.getId());
 	    }
 	    
 	    return "fail";

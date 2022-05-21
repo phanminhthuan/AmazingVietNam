@@ -35,6 +35,7 @@ public class RoomDAO {
 	public List<Room> findAll() {
 		Session session = this.sessionFactory.openSession();
 		List<Room> result = session.createQuery("FROM Room", Room.class).getResultList();
+		session.close();
 		return result;
 	}
 
@@ -49,6 +50,7 @@ public class RoomDAO {
 	public Room findById(int id) {
 		Session session = this.sessionFactory.openSession();
 		Room model = session.find(Room.class, id);
+		session.close();
 		return model;
 	}
 

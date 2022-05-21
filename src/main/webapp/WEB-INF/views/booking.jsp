@@ -3,7 +3,7 @@
 
 
 <%@ include file="common/header.jspf"%>
-
+<script src="resources/js/booking.js"></script>
 <!-- book section starts  -->
 
 <section class="book" id="book">
@@ -61,7 +61,7 @@
 					<option value="0"> Chọn phòng</option>
 					<c:forEach var="room" items="${rooms}">
 						<option value="${room.getId()}">
-							${room.getName()}
+							${room.getName()} ${room.getRoomType()}
 						</option>
 					</c:forEach>
 				</select>
@@ -87,6 +87,18 @@
 				<h3>Số điện thoại</h3>
 				<input type="tel" maxlength="10" placeholder="Nhập số điện thoại" name="phone_number">
 			</div>
+			<div class="image-room">	
+				<img name="img_room" style="width: 100%">
+			</div>
+			<div class="price-room" style="font-size: 20px">	
+				Giá: <span class="price" ></span> 
+			</div>
+			<div class="room-type" style="font-size: 20px">	
+				Loại phòng: <span class="type" ></span> 
+			</div>
+			<div class="total-price" style="font-size: 20px">	
+				Tổng tiền: <span class="total" ></span> 
+			</div>
 			<input type="button" class="btn" value="Đặt Phòng">
 			
 			
@@ -96,144 +108,6 @@
 
 </section>
 <!--  -->
-<script type="text/javascript">
-//tự động chọn phòng
-$(function () {
-	var optionsRoom = '<option value="0" selected> Chọn phòng</option>';
-	
-    $("#location").change(function () {
-    	const value = $(this).val();
-    	$("#room").html(optionsRoom);
-    	var options = '<option value="0" selected> Chọn khách sạn</option>';
-    	if(value === "") {
-    		$("#hotel").html(options);
-    		return;
-    	}
-    	
-        $.ajax({
-            url: '/booking-get-hotels?locationId=' + value,
-            type: "GET",
-            success: function (response) {
-                if (response) {
-                    var models = response;
-                    
-                    for (var i in models) {
-                        options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
-                    }
 
-                    $("#hotel").html(options);
-                }
-            }
-        });
-    });
-
-    $("#hotel").change(function () {
-    	const value = $(this).val();
-    	var options = optionsRoom;
-    	
-    	if(value === "") {
-    		$("#room").html(options);
-    		return;
-    	}
-    	
-        $.ajax({
-            url: '/booking-get-rooms?hotelId=' + value,
-            type: "GET",
-            success: function (response) {
-                if (response) {
-                    var models = response;
-                    
-                    for (var i in models) {
-                        options += '<option value="' + models[i]['id'] + '">' + models[i]['name'] + '</option>';
-                    }
-                    
-                    $("#room").html(options);
-                }
-            }
-        });
-    });
-    
-    $(".btn").click(function (e) {
-    	$("#message").html("");
-    	
-    	if($("select[name='location_id']").val() == null || $("select[name='location_id']").val() == "0"){
-    		$("#message").html("Vui lòng chọn địa điểm");
-    		$("select[name='location_id']").focus();
-			return;
-		}
-    	
-		if($("select[name='hotel_id']").val() == null || $("select[name='hotel_id']").val() == "0"){
-			$("#message").html("Vui lòng chọn khách sạn");
-			$("select[name='hotel_id']").focus();
-			return;
-		}
-		
-		if($("select[name='room_id']").val() == null || $("select[name='room_id']").val() == "0"){
-			$("#message").html("Vui lòng chọn phòng");
-			$("select[name='room_id']").focus();
-			return;
-		}
-		
-		if(!$("input[name='amount_people']").val()){
-			$("#message").html("Vui lòng nhập số người");
-			$("input[name='amount_people']").focus();
-			return;
-		}
-		
-		if($("input[name='check_in_date']").val() == ""){
-			$("#message").html("Vui lòng chọn ngày đặt phòng");
-			$("input[name='check_in_date']").focus();
-			return;
-		}
-		
-		if($("input[name='check_out_date']").val() == ""){
-			$("#message").html("Vui lòng chọn ngày trả phòng");
-			$("input[name='check_out_date']").focus();
-			return;
-		}
-		
-		if($("input[name='full_name']").val() == ""){
-			$("#message").html("Vui lòng nhập họ và tên");
-			$("input[name='full_name']").focus();
-			return;
-		}
-		
-		if($("input[name='phone_number']").val() == ""){
-			$("#message").html("Vui lòng nhập số điện thoại");
-			$("input[name='phone_number']").focus();
-			return;
-		}
-		
-        $.ajax({
-            url: '/booking-save',
-            type: "POST",
-            contentType:"application/json",
-            data: JSON.stringify({
-				"room_id": $("select[name='room_id']").val(),
-				"user_id": 1,
-				"hotel_id": $("select[name='hotel_id']").val(),
-				"amount_people": $("input[name='amount_people']").val(),
-				"check_in_date": $("input[name='check_in_date']").val(),
-				"check_out_date": $("input[name='check_out_date']").val(),
-				"full_name": $("input[name='full_name']").val(),
-				"phone_number": $("input[name='phone_number']").val(),
-            }),
-            
-            success: function (response) {
-                if (response == "success") {
-                    window.location = "/booking-info"; 
-                }
-                else {
-                	alert("Phòng đã có người đặt");
-                }	
-            }
-        });
-    });
-
-});
-
-
-
-</script>
 	<!-- book section ends -->
 <%@ include file="common/footer.jspf"%>

@@ -18,7 +18,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-
 <body>
 
 	<!-- header section starts  -->
@@ -40,14 +39,17 @@
 
 		<div class="icons">
 		    <i class="fas fa-search" id="search-btn"></i> 
+			<a href="/booking-info">
+			  <i class="fas fa-list" id="login-btn"></i>	
+			</a>
 			<a href="login">
 			  <i class="fas fa-user" id="login-btn"></i>	
 			</a>
 		</div>
 		
 		<div class="search-bar-container">
-            <input type="search" id="search-bar"
-                placeholder="Nhập điều bạn muốn tìm..." onkeyup="searchfunc()">
+            <input name="search-input-header" type="search" id="search-bar"
+                placeholder="Nhập điều bạn muốn tìm..." >
             <label for="search-bar" class="fas fa-search" onclick="gotoSearch()"></label>
         </div>
 
@@ -57,6 +59,17 @@
 	
 	<script type="text/javascript">
 		function gotoSearch() {
+			if($('#search-bar').val() == ""){
+	    		alert("Vui lòng nhập địa điểm");
+				return;
+			}
 			window.location = '/search?locationName=' + encodeURIComponent($('#search-bar').val());
+			
 		}
+		
+		$('#search-bar').on('keypress',function(e) {
+		    if(e.which == 13) {
+		    	gotoSearch();
+		    }
+		});
 	</script>

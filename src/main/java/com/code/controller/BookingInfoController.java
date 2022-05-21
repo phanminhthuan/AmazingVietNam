@@ -17,9 +17,11 @@ public class BookingInfoController {
 	private BookRoomDAO bookRoomDAO;
 	
 	@RequestMapping(value = "/booking-info", method = RequestMethod.GET)
-	public String bookingInfo(Model model) {
-		List<BookRoom> bookRooms = bookRoomDAO.findAllNoDeleted();
+	public String bookingInfo(Model model, String searchText) {
+		List<BookRoom> bookRooms = searchText != null ? bookRoomDAO.searchBooking(searchText) : 
+			bookRoomDAO.findAllNoDeleted();
 		model.addAttribute("bookRooms", bookRooms);
+		model.addAttribute("searchText", searchText);
 		return "booking-info";
 	}
 	
@@ -30,4 +32,5 @@ public class BookingInfoController {
 		bookRoomDAO.update(bookRoom);
 		return "redirect:booking-info";
 	}
+	
 }

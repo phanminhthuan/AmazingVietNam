@@ -54,6 +54,17 @@ public class BookRoom {
 	}
 	
 	@ManyToOne(optional=false)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private User user;
+	 
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	@ManyToOne(optional=false)
 	@JoinColumn(name = "room_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private Room room;
 	 
