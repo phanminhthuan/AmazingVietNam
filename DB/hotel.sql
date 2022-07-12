@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `full_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+book_rooms  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` bit(1) NOT NULL,
   `phone_number` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -184,3 +184,4 @@ INSERT INTO `users` (`id`, `full_name`, `user_name`, `password`, `email`, `statu
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+book_rooms

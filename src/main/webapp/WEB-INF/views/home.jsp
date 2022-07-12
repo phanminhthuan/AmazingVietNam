@@ -228,7 +228,6 @@
 
 			</div>
 		</div>
-
 		<div class="box">
 			<img src="resources/img/hoa_sen.jpg">
 			<div class="content">
@@ -250,6 +249,7 @@
 
 			</div>
 		</div>
+	</div>
 </section>
 
 <!--  -->

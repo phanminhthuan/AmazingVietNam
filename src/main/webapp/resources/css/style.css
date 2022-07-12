@@ -213,7 +213,7 @@ header .search-bar-container label:hover{
 }
 
 .login-form-container form p a{
-  color:var(--DeepSkyBlue);
+	color: #000000;
 }
 
 .login-form-container form p a:hover{
